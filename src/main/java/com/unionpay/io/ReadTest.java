@@ -3,9 +3,9 @@ package com.unionpay.io;
 import java.io.FileReader;
 
 /**
- * Created by puke on 2018/11/19
+ * created by poker on 2018/11/19
  */
-public class ReadTest{
+public class ReadTest {
     public static void main(String[] args) {
         try{
             StringBuffer str = new StringBuffer();
@@ -18,6 +18,13 @@ public class ReadTest{
             }
             System.out.println(str.length());
         }catch(Exception e){
+            FileReader f = new FileReader("/Users/poker/Documents/test");
+            while(f.ready()){
+                f.read(buff);
+                str.append(buff);
+            }
+            System.out.println(str.toString());
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
