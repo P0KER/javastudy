@@ -15,9 +15,10 @@ public class MyMath {
 
 
     public static void main(String[] args) {
-        System.out.println(MyMath.round(1234.4567, 2));
-        System.out.println(MyMath.round(1234.4567, 3));
-        System.out.println(MyMath.round(-1234.4567, 2));
-        System.out.println(MyMath.round(-1234.4567, 3));
+//        System.out.println(MyMath.round(1234.4567, 2));
+//        System.out.println(MyMath.round(1234.4567, 3));
+//        System.out.println(MyMath.round(-1234.4567, 2));
+//        System.out.println(MyMath.round(-1234.4567, 3));
+        System.out.println(Math.round(416.7) / 100.0);
     }
 }
