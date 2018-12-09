@@ -12,14 +12,16 @@ import java.lang.reflect.Method;
 public class ObjectUtils {
     private ObjectUtils(){}
 
-    public static void setObjectValue(Object wrapObject, String attribute, String value) throws Exception{
+    public static Field getObjectField(Object wrapObject, String attribute) throws Exception{
         Field field = wrapObject.getClass().getDeclaredField(attribute);
         if(field == null){
             field = wrapObject.getClass().getField(attribute);
         }
-        if(field == null){
-            return;
-        }
+        return field;
+    }
+
+    public static void setObjectValue(Object wrapObject, String attribute, Object value) throws Exception{
+        Field field = getObjectField(wrapObject, attribute);
         String methodName = "set" + StringUtils.initCap(attribute);
         Method method = wrapObject.getClass().getMethod(methodName, field.getType());
         method.invoke(wrapObject, value);
@@ -27,14 +29,6 @@ public class ObjectUtils {
 
     public static Object getObject(Object wrapObject, String attribute) throws Exception {
         String methodName = "get" + StringUtils.initCap(attribute);
-        Field field = wrapObject.getClass().getDeclaredField(attribute);
-        if(field == null){
-            field = wrapObject.getClass().getField(attribute);
-        }
-        if(field == null){
-            return null;
-        }
-
         Method method = wrapObject.getClass().getMethod(methodName);
         return method.invoke(wrapObject);
     }

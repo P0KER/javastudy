@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
-    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <appender ename="STDOUT" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%p][%t][%X{LOGID}]%m%n"/>
+            <param ename="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%p][%t][%X{LOGID}]%m%n"/>
         </layout>
     </appender>
-    <appender name="INFO_BIZ" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="D:/tmp/info.log"/>
-        <param name="datePattern" value="'.'yyyy-MM-dd"/>
-        <param name="immediateFlush" value="true"/>
-        <param name="bufferedIO" value="false"/>
-        <param name="bufferSize" value="2048"/>
+    <appender ename="INFO_BIZ" class="org.apache.log4j.DailyRollingFileAppender">
+        <param ename="file" value="D:/tmp/info.log"/>
+        <param ename="datePattern" value="'.'yyyy-MM-dd"/>
+        <param ename="immediateFlush" value="true"/>
+        <param ename="bufferedIO" value="false"/>
+        <param ename="bufferSize" value="2048"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%p][%X{LOGID}]%m%n"/>
+            <param ename="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%p][%X{LOGID}]%m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="INFO"/>
-            <param name="levelMax" value="INFO"/>
+            <param ename="levelMin" value="INFO"/>
+            <param ename="levelMax" value="INFO"/>
         </filter>
     </appender>
-    <appender name="WARN_BIZ" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="D:/tmp/warn.log"/>
-        <param name="datePattern" value="'.'yyyy-MM-dd"/>
-        <param name="immediateFlush" value="true"/>
-        <param name="bufferedIO" value="false"/>
-        <param name="bufferSize" value="2048"/>
+    <appender ename="WARN_BIZ" class="org.apache.log4j.DailyRollingFileAppender">
+        <param ename="file" value="D:/tmp/warn.log"/>
+        <param ename="datePattern" value="'.'yyyy-MM-dd"/>
+        <param ename="immediateFlush" value="true"/>
+        <param ename="bufferedIO" value="false"/>
+        <param ename="bufferSize" value="2048"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%p][%X{LOGID}]%m%n"/>
+            <param ename="conversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%p][%X{LOGID}]%m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="WARN"/>
-            <param name="levelMax" value="WARN"/>
+            <param ename="levelMin" value="WARN"/>
+            <param ename="levelMax" value="WARN"/>
         </filter>
     </appender>
 
-    <appender name="asyncInfoLog" class="org.apache.log4j.AsyncAppender">
+    <appender ename="asyncInfoLog" class="org.apache.log4j.AsyncAppender">
         <appender-ref ref="INFO_BIZ"/>
     </appender>
 
-    <appender name="asyncWarnLog" class="org.apache.log4j.AsyncAppender">
+    <appender ename="asyncWarnLog" class="org.apache.log4j.AsyncAppender">
         <appender-ref ref="WARN_BIZ"/>
     </appender>
     <!--<root>
@@ -50,17 +50,17 @@
     </root>-->
 
     <!--冲突的时候具有高优先级，包名优先级没它高-->
-    <logger name="syslog">
+    <logger ename="syslog">
         <level value="WARN"/>
         <appender-ref ref="asyncInfoLog"/>
         <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="com.unionpay.a">
+    <logger ename="com.unionpay.a">
         <level value="INFO"/>
         <appender-ref ref="asyncInfoLog"/>
         <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="com.unionpay.b">
+    <logger ename="com.unionpay.b">
         <level value="INFO"/>
         <appender-ref ref="asyncInfoLog"/>
         <appender-ref ref="STDOUT"/>

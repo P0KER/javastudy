@@ -18,10 +18,21 @@ public class BeanOperation {
         for(int i = 0; i< result.length; i++){
             String[] temp = result[i].split(":");
             String attribute = temp[0];
-            String value = temp[1];
+
             String[] fields = attribute.split("\\.");
-            Object currentObject = ObjectUtils.getObject(actionObject, fields[0]);
-            ObjectUtils.setObjectValue(currentObject, fields[1], value);
+            if(fields.length > 2){//多级配置
+                Object currentObject = actionObject;
+                for(int j = 0; j < fields.length - 1; j++){
+                    currentObject = ObjectUtils.getObject(currentObject, fields[j]);
+                }
+                Object value = ObjectValueUtils.getValue(currentObject, fields[fields.length - 1],temp[1]);
+                ObjectUtils.setObjectValue(currentObject, fields[fields.length - 1], value);
+            }else{//单级配置
+                Object currentObject = ObjectUtils.getObject(actionObject, fields[0]);
+                Object value = ObjectValueUtils.getValue(currentObject, fields[1], temp[1]);
+                ObjectUtils.setObjectValue(currentObject, fields[1], value);
+            }
+
         }
     }
 }
