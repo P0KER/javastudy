@@ -1,5 +1,4 @@
-.idea/libraries/*
-.idea/*
+.idea
 javastudy.iml
 target/*
 # Compiled class file
