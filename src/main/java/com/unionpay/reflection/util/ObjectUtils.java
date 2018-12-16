@@ -30,6 +30,15 @@ public class ObjectUtils {
     public static Object getObject(Object wrapObject, String attribute) throws Exception {
         String methodName = "get" + StringUtils.initCap(attribute);
         Method method = wrapObject.getClass().getMethod(methodName);
-        return method.invoke(wrapObject);
+        Field field = getObjectField(wrapObject, attribute);
+        if(field == null){
+            return null;
+        }
+        Object obj = method.invoke(wrapObject);
+        if(obj == null){
+            obj = field.getType().newInstance();
+            setObjectValue(wrapObject, attribute, obj);
+        }
+        return obj;
     }
 }
