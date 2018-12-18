@@ -10,7 +10,7 @@ public class Emp {
     private String job;
     private Double salary;
     private Date hireDate;
-    private Dept dept = new Dept();
+    private Dept dept;
 
     public String getEname() {
         return ename;

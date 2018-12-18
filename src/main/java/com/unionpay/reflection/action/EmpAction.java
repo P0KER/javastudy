@@ -7,7 +7,7 @@ import com.unionpay.reflection.vo.Emp;
  * created by poker on 2018/12/8
  */
 public class EmpAction {
-    private Emp emp = new Emp();
+    private Emp emp;
 
     public Emp getEmp() {
         return emp;
@@ -15,5 +15,9 @@ public class EmpAction {
 
     public void setValue(String val)throws Exception{
         BeanOperation.setBeanValue(this, val);
+    }
+
+    public void setEmp(Emp emp) {
+        this.emp = emp;
     }
 }

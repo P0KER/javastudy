@@ -8,7 +8,7 @@ public class Dept {
     private String dname;
     private String loc;
     private Long count;
-    private Company company = new Company();
+    private Company company;
 
     public String getDname() {
         return dname;
